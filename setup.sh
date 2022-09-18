@@ -12,6 +12,10 @@ if [ "${EUID}" -ne 0 ]; then
 		echo "You need to run this script as root"
 		exit 1
 fi
+if [ "$(systemd-detect-virt)" == "openvz" ]; then
+		echo "OpenVZ is not supported"
+		exit 1
+fi
 MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
 IZIN=$(wget -qO- https://raw.githubusercontent.com/vhsec/izin/main/ip.txt | grep $MYIP )
