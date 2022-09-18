@@ -31,11 +31,12 @@ exit 0
 fi
 #Install pkg
 apt update
-apt install wget dropbear python2 -y
+apt install wget dropbear python2 squid -y
 #copy depend
 mkdir /etc/vhsec
 cp ws/ws /etc/vhsec/ws
 cp ws/ws.service /etc/systemd/system/ws.service
+cp ws/badvpn /etc/vhsec/badvpn
 systemctl daemon-reload
 systemctl enable ws
 systemctl restart ws
