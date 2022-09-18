@@ -5,7 +5,7 @@ if [ "${EUID}" -ne 0 ]; then
 fi
 MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
-IZIN=$(curl https://raw.githubusercontent.com/vhsec/izin/main/ip.txt | grep $MYIP )
+IZIN=$(wget -qO- https://raw.githubusercontent.com/vhsec/izin/main/ip.txt | grep $MYIP )
 if [ $MYIP = $IZIN ]; then
 echo -e "${NC}${GREEN}Permission Accepted...${NC}"
 else
