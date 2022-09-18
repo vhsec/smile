@@ -20,8 +20,18 @@ echo -e "${NC}${GREEN}Permission Accepted...${NC}"
 else
 echo -e "${NC}${RED}Permission Denied!${NC}";
 echo -e "${NC}${LIGHT}Please Contact Admin!!"
-echo -e "${NC}${LIGHT}Facebook : https://m.facebook.com/lis.tio.718"
-echo -e "${NC}${LIGHT}WhatsApp : 081545854516"
-echo -e "${NC}${LIGHT}Telegram : https://t.me/Akbar218"
+echo -e "${NC}${LIGHT}Facebook : nothing"
+echo -e "${NC}${LIGHT}WhatsApp : nothing"
+echo -e "${NC}${LIGHT}Telegram : nothing"
 exit 0
 fi
+#Install pkg
+apt update
+apt install wget dropbear python2 -y
+#copy depend
+mkdir /etc/vhsec
+cp ws/ws /etc/vhsec/ws
+cp ws/ws.service /etc/systemd/system/ws.service
+systemctl daemon-reload
+systemctl enable ws
+systemctl restart ws
